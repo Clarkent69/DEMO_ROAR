@@ -5,9 +5,9 @@ import { MOCK_USERS, ROLES } from '../config/roles';
 const AuthContext = createContext(null);
 
 // Check if real Supabase credentials are configured
-const isSupabaseConfigured =
-  import.meta.env.VITE_SUPABASE_URL &&
-  import.meta.env.VITE_SUPABASE_URL !== 'https://your-project-id.supabase.co';
+const isSupabaseConfigured = Boolean(
+  (import.meta.env.VITE_SUPABASE_URL || 'https://vsgjczzksykgjukrchnm.supabase.co') !== 'https://your-project-id.supabase.co'
+);
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
@@ -133,11 +133,12 @@ export const AuthProvider = ({ children }) => {
     if (!isSupabaseConfigured) {
       return { success: false, message: 'Supabase configuration is required for Microsoft login.' };
     }
+    const redirectUrl = `${window.location.origin}${window.location.pathname}`;
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'azure',
       options: {
         scopes: 'email openid profile',
-        redirectTo: `${window.location.origin}/dashboard`,
+        redirectTo: redirectUrl,
       },
     });
     if (error) return { success: false, message: error.message };
