@@ -3,18 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { MOCK_USERS, ROLES } from '../config/roles';
 
-const ROLE_OPTIONS = [
-  { label: 'Student / APC User', value: ROLES.STUDENT },
-  { label: 'Faculty Representative', value: ROLES.FACULTY_REP },
-  { label: 'Librarian', value: ROLES.LIBRARIAN },
-  { label: 'Executive Director', value: ROLES.EXECUTIVE_DIRECTOR },
-];
-
 export default function Auth() {
   const [tab, setTab] = useState('login'); // 'login' | 'signup'
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState(ROLES.STUDENT);
   const [status, setStatus] = useState({ type: '', message: '' });
   const [loading, setLoading] = useState(false);
 
@@ -24,7 +16,6 @@ export default function Auth() {
   const resetForm = () => {
     setEmail('');
     setPassword('');
-    setRole(ROLES.STUDENT);
     setStatus({ type: '', message: '' });
   };
 
@@ -79,7 +70,7 @@ export default function Auth() {
     }
     setLoading(true);
     setStatus({ type: '', message: '' });
-    const result = await register(cleanEmail, password, role);
+    const result = await register(cleanEmail, password, ROLES.STUDENT);
     setLoading(false);
     if (result.success) {
       navigate('/dashboard');
@@ -247,10 +238,6 @@ export default function Auth() {
                 minLength={8}
                 autoComplete="new-password"
               />
-              <p className="auth-role-hint">
-                🔒 Demo mode: role is written directly to your session.
-              </p>
-
               <button type="submit" className="auth-submit-btn" disabled={loading}>
                 {loading ? 'Creating account…' : 'Create Account'}
               </button>
