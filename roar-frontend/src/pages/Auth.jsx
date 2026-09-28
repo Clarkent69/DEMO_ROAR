@@ -247,22 +247,6 @@ export default function Auth() {
                 minLength={8}
                 autoComplete="new-password"
               />
-
-              <label htmlFor="signup-role">Institutional Role</label>
-              <select
-                id="signup-role"
-                value={role}
-                onChange={(e) => setRole(e.target.value)}
-                className="auth-role-select"
-                required
-              >
-                {ROLE_OPTIONS.map((opt) => (
-                  <option key={opt.value} value={opt.value}>
-                    {opt.label}
-                  </option>
-                ))}
-              </select>
-
               <p className="auth-role-hint">
                 🔒 Demo mode: role is written directly to your session.
               </p>
