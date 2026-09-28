@@ -73,7 +73,13 @@ export default function Auth() {
     const result = await register(cleanEmail, password, ROLES.STUDENT);
     setLoading(false);
     if (result.success) {
-      navigate('/dashboard');
+      if (result.message) {
+        setStatus({ type: 'success', message: result.message });
+        setTab('login');
+        setPassword('');
+      } else {
+        navigate('/dashboard');
+      }
     } else {
       setStatus({ type: 'error', message: result.message });
     }
