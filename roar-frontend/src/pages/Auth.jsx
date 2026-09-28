@@ -25,7 +25,6 @@ export default function Auth() {
   };
 
 
-
   const handleLogin = async (e) => {
     e.preventDefault();
     const cleanEmail = email.trim().toLowerCase();
