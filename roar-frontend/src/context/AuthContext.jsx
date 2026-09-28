@@ -97,7 +97,13 @@ export const AuthProvider = ({ children }) => {
     // Fall through to Supabase for real accounts
     if (isSupabaseConfigured) {
       const { error } = await supabase.auth.signInWithPassword({ email, password });
-      if (error) return { success: false, message: error.message };
+      if (error) {
+        let message = error.message;
+        if (message === 'Email not confirmed') {
+          message = 'Email not confirmed. (Dev note: Disable "Confirm email" in Supabase Auth -> Providers -> Email to test freely)';
+        }
+        return { success: false, message };
+      }
       return { success: true };
     }
 
@@ -108,7 +114,13 @@ export const AuthProvider = ({ children }) => {
   const register = async (email, password, role) => {
     if (isSupabaseConfigured) {
       const { data, error } = await supabase.auth.signUp({ email, password });
-      if (error) return { success: false, message: error.message };
+      if (error) {
+        let message = error.message;
+        if (message.toLowerCase().includes('rate limit')) {
+          message = 'Email rate limit exceeded. (Dev note: Disable "Confirm email" in Supabase Auth settings to prevent this)';
+        }
+        return { success: false, message };
+      }
 
       // Write role into profiles table
       if (data.user) {
