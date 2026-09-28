@@ -48,9 +48,17 @@ export default function Auth() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    const cleanEmail = email.trim().toLowerCase();
+    if (!cleanEmail.endsWith('@apc.edu.ph')) {
+      setStatus({
+        type: 'error',
+        message: 'Institutional access required: Please enter an official @apc.edu.ph email address.',
+      });
+      return;
+    }
     setLoading(true);
     setStatus({ type: '', message: '' });
-    const result = await login(email, password);
+    const result = await login(cleanEmail, password);
     setLoading(false);
     if (result.success) {
       navigate('/dashboard');
@@ -61,9 +69,17 @@ export default function Auth() {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    const cleanEmail = email.trim().toLowerCase();
+    if (!cleanEmail.endsWith('@apc.edu.ph')) {
+      setStatus({
+        type: 'error',
+        message: 'Registration restricted: Only official institutional emails (@apc.edu.ph) are permitted.',
+      });
+      return;
+    }
     setLoading(true);
     setStatus({ type: '', message: '' });
-    const result = await register(email, password, role);
+    const result = await register(cleanEmail, password, role);
     setLoading(false);
     if (result.success) {
       navigate('/dashboard');
