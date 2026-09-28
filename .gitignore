@@ -1,2 +1,19 @@
 # Exclude Doc folder
 Doc/
+
+# Node dependencies
+node_modules/
+**/node_modules/
+
+# Build artifacts
+dist/
+**/dist/
+
+# Environment files
+.env
+.env.*
+*.local
+
+# Root accidental install files
+/package.json
+/package-lock.json
