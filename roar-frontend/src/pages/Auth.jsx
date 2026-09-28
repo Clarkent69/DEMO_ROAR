@@ -10,7 +10,7 @@ export default function Auth() {
   const [status, setStatus] = useState({ type: '', message: '' });
   const [loading, setLoading] = useState(false);
 
-  const { login, loginWithMicrosoft, register } = useAuth();
+  const { login, register } = useAuth();
   const navigate = useNavigate();
 
   const resetForm = () => {
@@ -24,18 +24,7 @@ export default function Auth() {
     resetForm();
   };
 
-  const handleMicrosoftLogin = async () => {
-    setLoading(true);
-    setStatus({ type: '', message: '' });
-    const result = await loginWithMicrosoft();
-    if (!result?.success) {
-      setLoading(false);
-      setStatus({
-        type: 'error',
-        message: result?.message || 'Failed to authenticate with Microsoft Azure.',
-      });
-    }
-  };
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -130,25 +119,6 @@ export default function Auth() {
         {/* ── Login Form ── */}
         {tab === 'login' && (
           <div className="auth-tab-content">
-            <button
-              type="button"
-              onClick={handleMicrosoftLogin}
-              className="microsoft-login-btn"
-              disabled={loading}
-              id="microsoft-login-btn"
-            >
-              <svg className="microsoft-icon" width="20" height="20" viewBox="0 0 21 21" aria-hidden="true">
-                <rect x="1" y="1" width="9" height="9" fill="#f25022"/>
-                <rect x="11" y="1" width="9" height="9" fill="#7fba00"/>
-                <rect x="1" y="11" width="9" height="9" fill="#00a4ef"/>
-                <rect x="11" y="11" width="9" height="9" fill="#ffb900"/>
-              </svg>
-              <span>Sign in with Microsoft</span>
-            </button>
-
-            <div className="auth-divider">
-              <span>or sign in with email</span>
-            </div>
 
             <form onSubmit={handleLogin} className="auth-form">
               <label htmlFor="login-email">Email Address</label>
@@ -201,25 +171,6 @@ export default function Auth() {
         {/* ── Sign Up Form ── */}
         {tab === 'signup' && (
           <div className="auth-tab-content">
-            <button
-              type="button"
-              onClick={handleMicrosoftLogin}
-              className="microsoft-login-btn"
-              disabled={loading}
-              id="microsoft-signup-btn"
-            >
-              <svg className="microsoft-icon" width="20" height="20" viewBox="0 0 21 21" aria-hidden="true">
-                <rect x="1" y="1" width="9" height="9" fill="#f25022"/>
-                <rect x="11" y="1" width="9" height="9" fill="#7fba00"/>
-                <rect x="1" y="11" width="9" height="9" fill="#00a4ef"/>
-                <rect x="11" y="11" width="9" height="9" fill="#ffb900"/>
-              </svg>
-              <span>Continue with Microsoft</span>
-            </button>
-
-            <div className="auth-divider">
-              <span>or register manually</span>
-            </div>
 
             <form onSubmit={handleSignUp} className="auth-form">
               <label htmlFor="signup-email">Email Address</label>

@@ -140,22 +140,7 @@ export const AuthProvider = ({ children }) => {
     return { success: true };
   };
 
-  // ─── Microsoft Azure OAuth ────────────────────────────────────────────────
-  const loginWithMicrosoft = async () => {
-    if (!isSupabaseConfigured) {
-      return { success: false, message: 'Supabase configuration is required for Microsoft login.' };
-    }
-    const redirectUrl = `${window.location.origin}${window.location.pathname}`;
-    const { data, error } = await supabase.auth.signInWithOAuth({
-      provider: 'azure',
-      options: {
-        scopes: 'email openid profile',
-        redirectTo: redirectUrl,
-      },
-    });
-    if (error) return { success: false, message: error.message };
-    return { success: true, data };
-  };
+
 
   // ─── Logout ────────────────────────────────────────────────────────────────
   const logout = async () => {
@@ -170,7 +155,7 @@ export const AuthProvider = ({ children }) => {
         user,
         isAuthenticated: !!user,
         login,
-        loginWithMicrosoft,
+
         register,
         logout,
         loading,
