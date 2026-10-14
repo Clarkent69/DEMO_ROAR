@@ -33,7 +33,7 @@ export default function ResearchDetail() {
           </span>
           {paper.callNumber && (
             <span style={{ fontSize: '0.75rem', color: 'var(--muted)', marginLeft: 'auto' }}>
-              📁 {paper.callNumber}
+              {paper.callNumber}
             </span>
           )}
         </div>

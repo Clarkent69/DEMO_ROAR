@@ -10,7 +10,7 @@ export default function Unauthorized() {
     <div className="unauthorized-container">
       <div className="unauthorized-card">
 
-        <div className="unauthorized-icon">🚫</div>
+        <div className="unauthorized-icon">403</div>
 
         <div className="unauthorized-badge">403</div>
 

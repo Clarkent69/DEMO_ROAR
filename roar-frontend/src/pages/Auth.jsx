@@ -85,7 +85,7 @@ export default function Auth() {
 
         {/* ── Brand ── */}
         <div className="auth-brand">
-          <span className="auth-brand-logo">📚</span>
+          <span className="auth-brand-logo"></span>
           <h1 className="auth-brand-title">Rams Open Access Repository</h1>
           <p className="auth-brand-sub">Research Output & Archive Repository</p>
         </div>
@@ -111,7 +111,7 @@ export default function Auth() {
         {/* ── Status Banner ── */}
         {status.message && (
           <div className={`auth-status ${status.type}`}>
-            {status.type === 'error' ? '⚠️' : '✅'} {status.message}
+            {status.type === 'error' ? 'Error:' : 'Notice:'} {status.message}
           </div>
         )}
 
@@ -148,7 +148,7 @@ export default function Auth() {
 
               {/* Quick-fill panel for demo */}
               <div className="auth-quick-fill">
-                <p>⚡ Demo Quick-Fill</p>
+                <p>Demo Quick-Fill</p>
                 <div className="auth-quick-btns">
                   {MOCK_USERS.map((u) => (
                     <button

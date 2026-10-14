@@ -79,7 +79,7 @@ export default function Home() {
                 {r.authors.join(', ')} · {r.program}
               </p>
               <div className="research-card-meta">
-                <span>📅 {r.year} &nbsp;·&nbsp; 👁️ {r.views} views</span>
+                <span>{r.year} &nbsp;&middot;&nbsp; {r.views} views</span>
                 <span className="research-view-link">View details →</span>
               </div>
             </div>

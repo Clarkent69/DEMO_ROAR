@@ -87,7 +87,7 @@ export default function SubmitResearch() {
   if (submitted) {
     return (
       <div style={{ maxWidth: 520, margin: '80px auto', padding: '0 24px', textAlign: 'center' }}>
-        <div style={{ fontSize: '3.5rem', marginBottom: 12 }}>✅</div>
+        <div style={{ fontSize: '3.5rem', marginBottom: 12 }}></div>
         <h2 style={{ color: 'var(--navy)', marginBottom: 8 }}>Submission Received</h2>
         <p style={{ color: 'var(--muted)', marginBottom: 24 }}>
           <strong>{formData.title}</strong> has been submitted for librarian review and cataloging.
@@ -112,7 +112,7 @@ export default function SubmitResearch() {
       </p>
 
       {submitError && (
-        <div className="auth-status error" style={{ marginBottom: 16 }}>⚠️ {submitError}</div>
+        <div className="auth-status error" style={{ marginBottom: 16 }}>{submitError}</div>
       )}
 
       {/* Document type selector */}
@@ -160,7 +160,7 @@ export default function SubmitResearch() {
             {file ? (
               <>
                 <div style={{ fontSize: '2.8rem', marginBottom: 8 }}>
-                  {file.name.endsWith('.pdf') ? '📄' : '📝'}
+                  {file.name.endsWith('.pdf') ? 'PDF' : 'DOC'}
                 </div>
                 <p style={{ margin: '0 0 4px', fontWeight: 700, color: 'var(--navy)', fontSize: '0.9rem', wordBreak: 'break-word', textAlign: 'center' }}>
                   {file.name}
@@ -171,7 +171,7 @@ export default function SubmitResearch() {
               </>
             ) : (
               <>
-                <div style={{ fontSize: '3rem', marginBottom: 12 }}>☁️</div>
+                <div style={{ fontSize: '3rem', marginBottom: 12 }}></div>
                 <p style={{ margin: '0 0 6px', fontWeight: 700, color: 'var(--navy)', fontSize: '0.95rem' }}>
                   Click or drag &amp; drop
                 </p>
@@ -189,7 +189,7 @@ export default function SubmitResearch() {
               onClick={runExtraction}
               disabled={extracting}
             >
-              {extracting ? '⏳ Extracting metadata…' : '✨ Run AI Metadata Extractor'}
+              {extracting ? 'Extracting metadata…' : 'Run AI Metadata Extractor'}
             </button>
           )}
         </div>
@@ -202,7 +202,7 @@ export default function SubmitResearch() {
           <div className="ai-extractor-panel">
             {!file && (
               <div style={{ textAlign: 'center', padding: '40px 16px', color: 'var(--muted)' }}>
-                <div style={{ fontSize: '2.2rem', marginBottom: 8 }}>🤖</div>
+                <div style={{ fontSize: '2.2rem', marginBottom: 8 }}></div>
                 <p style={{ margin: 0, fontSize: '0.85rem' }}>
                   Upload a manuscript, then click<br /><strong>Run AI Metadata Extractor</strong>
                 </p>
@@ -224,7 +224,7 @@ export default function SubmitResearch() {
             {extracted && !extracting && (
               <div style={{ padding: '4px 0' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-                  <span style={{ fontSize: '1rem' }}>✅</span>
+                  <span style={{ fontSize: '1rem' }}></span>
                   <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#15803d' }}>
                     Extraction complete — review and edit below
                   </span>
@@ -271,7 +271,7 @@ export default function SubmitResearch() {
           </div>
           <div style={{ display: 'flex', gap: 12 }}>
             <button type="submit" className="btn-primary" style={{ padding: '11px 32px', fontSize: '0.9rem' }}>
-              📤 Submit for Review
+              Submit for Review
             </button>
             <button type="button" className="btn-secondary" onClick={() => {
               setFile(null); setExtracted(null);

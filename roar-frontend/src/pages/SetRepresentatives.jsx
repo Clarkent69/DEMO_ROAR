@@ -103,7 +103,7 @@ export default function SetRepresentatives() {
           <div className="modal-card" onClick={(e) => e.stopPropagation()}>
             <h3 className="modal-title">Add Faculty Representative</h3>
             {formError && (
-              <p style={{ fontSize: '0.82rem', color: '#b91c1c', marginBottom: '12px' }}>⚠️ {formError}</p>
+              <p style={{ fontSize: '0.82rem', color: '#b91c1c', marginBottom: '12px' }}>{formError}</p>
             )}
             <form onSubmit={handleAdd}>
               <div className="form-group">

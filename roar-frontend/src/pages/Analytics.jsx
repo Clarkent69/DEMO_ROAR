@@ -4,31 +4,31 @@ import { useAuth } from '../context/AuthContext';
 import { ROLES } from '../config/roles';
 
 const METRICS_ALL = [
-  { icon: '📄', label: 'Total Research Submissions', value: '142', delta: '+12 this month' },
-  { icon: '👁️', label: 'Total Document Views', value: '3,841', delta: '+284 this week' },
-  { icon: '🏫', label: 'Departments Represented', value: '11', delta: 'Across SOCIT, SEAS, SBMA' },
-  { icon: '📅', label: 'Submissions This Year', value: '38', delta: 'Since Jan 2026' },
+  { icon: '', label: 'Total Research Submissions', value: '142', delta: '+12 this month' },
+  { icon: '', label: 'Total Document Views', value: '3,841', delta: '+284 this week' },
+  { icon: '', label: 'Departments Represented', value: '11', delta: 'Across SOCIT, SEAS, SBMA' },
+  { icon: '', label: 'Submissions This Year', value: '38', delta: 'Since Jan 2026' },
 ];
 
 const METRICS_FACULTY = [
-  { icon: '📤', label: 'Your Submissions', value: '7', delta: '+2 pending review' },
-  { icon: '✅', label: 'Approved & Published', value: '5', delta: 'This academic year' },
-  { icon: '⏳', label: 'Awaiting Librarian Review', value: '2', delta: 'Submitted this month' },
-  { icon: '🏆', label: 'Most Cited Work', value: 'Tidal Energy Systems in PH Waters', delta: '48 citations' },
+  { icon: '', label: 'Your Submissions', value: '7', delta: '+2 pending review' },
+  { icon: '', label: 'Approved & Published', value: '5', delta: 'This academic year' },
+  { icon: '', label: 'Awaiting Librarian Review', value: '2', delta: 'Submitted this month' },
+  { icon: '', label: 'Most Cited Work', value: 'Tidal Energy Systems in PH Waters', delta: '48 citations' },
 ];
 
 const METRICS_LIBRARIAN = [
-  { icon: '🗂️', label: 'Documents Archived This Month', value: '27', delta: '+5 vs last month' },
-  { icon: '🔢', label: 'Call Numbers Assigned', value: '214', delta: 'Total in system' },
-  { icon: '🔍', label: 'Pending Classification', value: '9', delta: 'In queue' },
-  { icon: '📦', label: 'Archive Completion Rate', value: '94%', delta: '↑ 3% from last month' },
+  { icon: '', label: 'Documents Archived This Month', value: '27', delta: '+5 vs last month' },
+  { icon: '', label: 'Call Numbers Assigned', value: '214', delta: 'Total in system' },
+  { icon: '', label: 'Pending Classification', value: '9', delta: 'In queue' },
+  { icon: '', label: 'Archive Completion Rate', value: '94%', delta: '↑ 3% from last month' },
 ];
 
 const METRICS_EXEC = [
-  { icon: '👥', label: 'Active Faculty Representatives', value: '8', delta: 'Across 6 departments' },
-  { icon: '📋', label: 'Departments with Coverage', value: '6 / 11', delta: '5 still need assignment' },
-  { icon: '📈', label: 'Research Output Growth', value: '+23%', delta: 'Year-over-year' },
-  { icon: '⚠️', label: 'Flagged Submissions', value: '3', delta: 'Requires governance review' },
+  { icon: '', label: 'Active Faculty Representatives', value: '8', delta: 'Across 6 departments' },
+  { icon: '', label: 'Departments with Coverage', value: '6 / 11', delta: '5 still need assignment' },
+  { icon: '', label: 'Research Output Growth', value: '+23%', delta: 'Year-over-year' },
+  { icon: '', label: 'Flagged Submissions', value: '3', delta: 'Requires governance review' },
 ];
 
 function MetricCard({ icon, label, value, delta }) {
@@ -76,7 +76,7 @@ export default function Analytics() {
       <div className="analytics-container">
         <div className="analytics-header">
           <div>
-            <h2 className="analytics-title">📊 Analytics &amp; Reports</h2>
+            <h2 className="analytics-title">Analytics &amp; Reports</h2>
             <p className="analytics-sub">
               Generate a snapshot report for <strong>{roleLabel}</strong> role.
             </p>
@@ -89,7 +89,7 @@ export default function Analytics() {
           borderRadius: 'var(--radius)', padding: '56px 32px 48px', textAlign: 'center',
           boxShadow: 'var(--shadow)',
         }}>
-          <div style={{ fontSize: '4rem', marginBottom: 12, lineHeight: 1 }}>📈</div>
+          <div style={{ fontSize: '4rem', marginBottom: 12, lineHeight: 1 }}></div>
           <h3 style={{ color: 'var(--navy)', margin: '0 0 8px', fontSize: '1.25rem', fontWeight: 800 }}>
             {roleLabel} Analytics Report
           </h3>
@@ -101,10 +101,10 @@ export default function Analytics() {
           {/* Summary pills */}
           <div style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 32 }}>
             {[
-              { icon: '📄', label: `${MOCK_RESEARCH.length} Research Records` },
-              { icon: '👁️', label: `${totalViews.toLocaleString()} Total Views` },
-              { icon: '✅', label: `${published} Published` },
-              { icon: '⏳', label: `${MOCK_RESEARCH.length - published} Under Review` },
+              { icon: '', label: `${MOCK_RESEARCH.length} Research Records` },
+              { icon: '', label: `${totalViews.toLocaleString()} Total Views` },
+              { icon: '', label: `${published} Published` },
+              { icon: '', label: `${MOCK_RESEARCH.length - published} Under Review` },
             ].map((s) => (
               <div key={s.label} style={{
                 background: 'var(--gold-light)', border: '1px solid #f0d98e',
@@ -122,7 +122,7 @@ export default function Analytics() {
             onClick={handleGenerate}
             disabled={generating}
           >
-            {generating ? '⏳ Generating report…' : '📊 Generate Report'}
+            {generating ? 'Generating report…' : 'Generate Report'}
           </button>
         </div>
       </div>
@@ -136,7 +136,7 @@ export default function Analytics() {
       {/* Header */}
       <div className="analytics-header">
         <div>
-          <h2 className="analytics-title">📊 Analytics &amp; Reports</h2>
+          <h2 className="analytics-title">Analytics &amp; Reports</h2>
           <p className="analytics-sub">
             Showing <strong>{roleLabel}</strong> metrics — live data will replace these figures once Supabase is connected.
           </p>

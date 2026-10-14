@@ -35,7 +35,7 @@ export default function Dashboard() {
       {/* ── Identity strip (read-only — Sign Out is in Navbar) ── */}
       <div className="dashboard-header">
         <div className="dashboard-header-left">
-          <span className="dashboard-brand">📚 ROAR</span>
+          <span className="dashboard-brand">ROAR</span>
           <div className="dashboard-identity">
             <span className="dashboard-email">{user?.email}</span>
             <span className="dashboard-role-pill">{user?.role}</span>
@@ -54,7 +54,7 @@ export default function Dashboard() {
 
         {/* All roles */}
         <ActionCard
-          icon="🔍"
+          icon=""
           title="Browse & View Research"
           description="Search, filter, and discover institutional research outputs from all departments."
           badge="All Roles"
@@ -64,7 +64,7 @@ export default function Dashboard() {
         {/* Faculty Representative */}
         {user?.role === ROLES.FACULTY_REP && (
           <ActionCard
-            icon="📤"
+            icon=""
             title="Submit Research Material"
             description="Upload and submit your department's research outputs for cataloging and archiving."
             badge="Faculty Rep"
@@ -75,7 +75,7 @@ export default function Dashboard() {
         {/* Librarian */}
         {user?.role === ROLES.LIBRARIAN && (
           <ActionCard
-            icon="🗂️"
+            icon=""
             title="Catalog & Archive Documents"
             description="Assign call numbers, classify materials, and manage the institutional archive."
             badge="Librarian"
@@ -86,7 +86,7 @@ export default function Dashboard() {
         {/* Executive Director */}
         {user?.role === ROLES.EXECUTIVE_DIRECTOR && (
           <ActionCard
-            icon="👥"
+            icon=""
             title="Manage Representatives"
             description="Add or remove Faculty Representatives for departments across the institution."
             badge="Exec Director"
@@ -97,7 +97,7 @@ export default function Dashboard() {
         {/* Analytics — staff only */}
         {[ROLES.FACULTY_REP, ROLES.LIBRARIAN, ROLES.EXECUTIVE_DIRECTOR].includes(user?.role) && (
           <ActionCard
-            icon="📊"
+            icon=""
             title="Analytics & Reports"
             description="View usage statistics, submission trends, and generate analytical reports."
             badge="Staff Only"
@@ -109,7 +109,7 @@ export default function Dashboard() {
 
       {user?.role === ROLES.STUDENT && (
         <div className="dashboard-student-notice">
-          <span>ℹ️</span>
+          <span></span>
           <p>
             As a <strong>Student / APC User</strong>, you have read-only access to the research catalog.
           </p>
